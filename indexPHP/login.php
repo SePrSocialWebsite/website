@@ -5,8 +5,8 @@ echo "<br>";
 
 include '../mainPHP/init.php';
 
-$user1 =  clearinvalidinput($_GET['username']);
-$pass1 = clearinvalidinput($_GET['password']);
+$user1 =  sanitizeInput($_GET['username']);
+$pass1 = sanitizeInput($_GET['password']);
 
 $query = "Select * from user where username ='" . $user1. "' and password ='" . $pass1 . "';";
 

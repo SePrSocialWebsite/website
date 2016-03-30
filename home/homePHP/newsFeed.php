@@ -7,7 +7,7 @@
  */
 include '../../mainPHP/init.php';
 
-$comment =  clearinvalidinput($_GET['comment']);
+$comment =  sanitizeInput($_GET['comment']);
 $username = $_SESSION["userName"];
 $now = new DateTime();
 
