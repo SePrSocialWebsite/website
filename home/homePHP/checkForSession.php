@@ -9,5 +9,6 @@
 
 if(!isset($_SESSION["logged"])){
     echo "no sessions detected";
-    header("Refresh: 1; url=../index.html");
+    header("Refresh: 0; url=../index.html");
+    exit();
 }

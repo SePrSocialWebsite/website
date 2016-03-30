@@ -6,6 +6,7 @@
  * Time: 19:45
  */
 include '../../mainPHP/init.php';
+include '../homePHP/checkForSession.php';
 
 $comment =  sanitizeInput($_GET['comment']);
 $username = $_SESSION["userName"];
