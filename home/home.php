@@ -34,20 +34,27 @@ include 'homePHP/checkForSession.php'
         <div class="articleContent">
             <form action="homePHP/newsFeed.php" method="get">
                 Comment:<br/>
-                <textarea name='comment' id='comment'></textarea><br/>
+                <textarea name='comment' id='comment' rows="4" cols="50"></textarea><br/>
                 <input type="submit" value="Submit">
             </form>
         </div>
+        <?php
+        $query = "SELECT * FROM `news` ORDER BY time DESC LIMIT 5";
 
-        <div class="articleTitle">News feed</div><br/>
+        $result = sendQuery($query);
 
-        <div class="articleTitle">user</div>
-        <div class="articleContent">
-            <p>Time:  </p><br/>
-            <p>Message content</p><br/>
-        </div>
-
-
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                echo "<div class=\"articleTitle\">User: " . $row["username"] . "</div><br/>";
+                echo "<div class=\"articleContent\">";
+                echo "<p>Time: " . $row["time"] . "</p><br/>";
+                $wrappedString = wordwrap($row["news"], 30, '<br/>', true);
+                echo "<p>Comment: " . $wrappedString . "</p><br/>";
+                echo "</div>";
+            }
+        }
+        ?>
     </div>
 
 </div>

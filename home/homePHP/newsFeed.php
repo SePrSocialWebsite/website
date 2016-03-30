@@ -7,6 +7,12 @@
  */
 include '../../mainPHP/init.php';
 
-echo  $_GET['comment'];
+$comment =  clearinvalidinput($_GET['comment']);
+$username = $_SESSION["userName"];
+$now = new DateTime();
 
-header("Refresh: 1; url=../home.php");  //redirecting back to home page
+$query = "INSERT INTO `news`(`username`, `news`, `time`) VALUES ('" . $username . "','" . $comment . "','" .$now->format('Y-m-d H:i:s') ."');";
+
+sendQuery($query);
+
+header("Refresh: 0; url=../home.php");  //redirecting back to home page

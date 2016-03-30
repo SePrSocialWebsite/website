@@ -1,19 +1,14 @@
 <?php
-$str = "Hello world!";
+$str = "working";
 echo $str;
-echo "<br>";
-$user1 =  $_GET['username'];
-echo $user1;
-echo "<br>";
-$pass1 = $_GET['password'];
-echo $pass1;
-echo "<br>";
-echo "What a nice day!";
 echo "<br>";
 
 include '../mainPHP/init.php';
 
-$query = "Select * from user where username ='" . $user1 . "' and password ='" . $pass1 . "';";
+$user1 =  clearinvalidinput($_GET['username']);
+$pass1 = clearinvalidinput($_GET['password']);
+
+$query = "Select * from user where username ='" . $user1. "' and password ='" . $pass1 . "';";
 
 
 if (mysqli_num_rows(sendQuery($query)) == 1)

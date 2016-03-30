@@ -7,7 +7,10 @@
  * Time: 18:20
  */
 
-function sanitize($text)
-{
+function clearinvalidinput($text){
+
+    $text = htmlspecialchars($text);
+    $text = stripslashes($text);
     return $text;
+    
 }
