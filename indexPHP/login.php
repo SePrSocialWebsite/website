@@ -11,7 +11,8 @@ $pass1 = sanitizeInput($_GET['password']);
 $query = "Select * from user where username ='" . $user1. "' and password ='" . $pass1 . "';";
 
 
-if (mysqli_num_rows(sendQuery($query)) == 1)
+//if (mysqli_num_rows(sendQuery($query)) == 1)
+if(loginQuery($user1,$pass1) == 1)
 {
     $_SESSION["logged"] ="true";
     $_SESSION["userName"] = $user1;

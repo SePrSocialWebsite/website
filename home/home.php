@@ -49,7 +49,7 @@ include 'homePHP/checkForSession.php'
                 echo "<div class=\"articleTitle\">User: " . $row["username"] . "</div><br/>";
                 echo "<div class=\"articleContent\">";
                 echo "<p>Time: " . $row["time"] . "</p><br/>";
-                $wrappedString = wordwrap($row["news"], 30, '<br/>', true);
+                $wrappedString = wordwrap($row["news"], 60, '<br/>', true);
                 echo "<p>Comment: " . $wrappedString . "</p><br/>";
                 echo "</div>";
             }

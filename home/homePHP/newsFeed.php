@@ -12,8 +12,6 @@ $comment =  sanitizeInput($_GET['comment']);
 $username = $_SESSION["userName"];
 $now = new DateTime();
 
-$query = "INSERT INTO `news`(`username`, `news`, `time`) VALUES ('" . $username . "','" . $comment . "','" .$now->format('Y-m-d H:i:s') ."');";
-
-sendQuery($query);
+postQuery($comment, $username, $now->format('Y-m-d H:i:s'));
 
 header("Refresh: 0; url=../home.php");  //redirecting back to home page

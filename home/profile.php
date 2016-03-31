@@ -18,7 +18,7 @@ include 'homePHP/checkForSession.php'
 <div id="page">
     <div id="header">
         <div class="title">Social website</div>
-        <div class="subText">You are logged in as <?php echo $_SESSION["userName"]?></div>
+        <div class="subText">You are logged in as <?php echo $_SESSION["userName"] ?></div>
     </div>
     <div id="bar">
         <div class="menuLink"><a href="home.php">Home</a></div>
@@ -33,7 +33,7 @@ include 'homePHP/checkForSession.php'
         <div class="articleTitle">Profile</div>
 
         <div class="articleContent">
-            <form action="indexPHP/profile.php" method="get">
+            <form action="homePHP/updateprofile.php" method="get">
                 <label>Current password</label>
                 <br/>
                 <input type="password" name="password0">
@@ -50,7 +50,6 @@ include 'homePHP/checkForSession.php'
                 <br/>
             </form>
         </div>
-
 
     </div>
 
