@@ -20,9 +20,13 @@ include 'homePHP/checkForSession.php'
     
     <?php
 if(!empty($_POST)){
-if( $_SESSION["userPassword"]===$_POST["password0"]){
-   if($_POST["password1"]===$_POST["password2"]){
-       $query = "update user set password='" . $_POST["password1"] . "' where username ='" . $_SESSION["userName"]. "';";
+    $pass0 =  sanitizeInput($_POST["password0"]);
+    $pass1 =  sanitizeInput($_POST["password1"]);
+    $pass2 = sanitizeInput($_POST["password2"]);
+
+if( $_SESSION["userPassword"]==$pass0){
+   if($pass1===$pass2){
+       $query = "update user set password='" . $pass1 . "' where username ='" . $_SESSION["userName"]. "';";
        sendQuery($query);
      if( isset($_SESSION)){
     session_destroy();
