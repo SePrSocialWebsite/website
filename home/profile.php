@@ -7,6 +7,8 @@
  */
 include '../mainPHP/init.php';
 include 'homePHP/checkForSession.php'
+      
+
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -15,10 +17,35 @@ include 'homePHP/checkForSession.php'
     <link rel="stylesheet" type="text/css" href="../home/homeCSS/style.css"/>
 </head>
 <body>
+    
+    <?php
+if(!empty($_POST)){
+if( $_SESSION["userPassword"]===$_POST["password0"]){
+   if($_POST["password1"]===$_POST["password2"]){
+       $query = "update user set password='" . $_POST["password1"] . "' where username ='" . $_SESSION["userName"]. "';";
+       sendQuery($query);
+     if( isset($_SESSION)){
+    session_destroy();
+   
+}
+    header("Refresh: 3; url=../../index.html"); // message & redirect after 3 seconds
+    echo "You are password changed   successfully.<br>You are being redirected.";
+    echo "You are loggout.<br>You are being redirected.";
+   }
+     }
+	else {
+     echo '<script>alert("Please check your passoword andtry again");</script>';}
+}
+
+?>
+    
+    
+    
+    
 <div id="page">
     <div id="header">
         <div class="title">Social website</div>
-        <div class="subText">You are logged in as <?php echo $_SESSION["userName"] ?></div>
+        <div class="subText">You are logged in as <?php echo  $_SESSION["userName"]?></div>
     </div>
     <div id="bar">
         <div class="menuLink"><a href="home.php">Home</a></div>
@@ -33,8 +60,8 @@ include 'homePHP/checkForSession.php'
         <div class="articleTitle">Profile</div>
 
         <div class="articleContent">
-            <form action="homePHP/updateprofile.php" method="get">
-                <label>Current password</label>
+            <form action="" method="POST">
+                <label>Current password </label>
                 <br/>
                 <input type="password" name="password0">
                 <br/>
@@ -50,6 +77,7 @@ include 'homePHP/checkForSession.php'
                 <br/>
             </form>
         </div>
+
 
     </div>
 
